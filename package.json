@@ -2,7 +2,7 @@
   "name": "sol-login",
   "version": "1.0.1",
   "description": "Permite loguearse al portal SOL de SUNAT",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "scripts": {
     "start": "node /lib/index.js",
     "test": "jasmine"
