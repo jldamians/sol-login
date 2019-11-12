@@ -24,6 +24,7 @@
   "homepage": "https://github.com/jldamians/sol-login#readme",
   "dependencies": {
     "axios": "^0.19.0",
-    "promise-poller": "^1.9.1"
+    "promise-poller": "^1.9.1",
+    "tea-error": "^0.2.0"
   }
 }
