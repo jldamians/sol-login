@@ -27,5 +27,8 @@
     "promise-poller": "^1.9.1",
     "tea-error": "^0.2.0",
     "check-ruc": "git+ssh://git@github.com/jldamians/check-ruc.git#v1.0.2"
+  },
+  "devDependencies": {
+    "puppeteer": "^2.1.1"
   }
 }
