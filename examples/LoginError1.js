@@ -1,13 +1,10 @@
-const chromium = require('chrome-aws-lambda');
+const puppeteer = require('puppeteer');
 
 const Signin = require('../lib');
 
 (async() => {
-  const browser = await chromium.puppeteer.launch({
-    args: chromium.args,
-    headless: chromium.headless,
-    defaultViewport: chromium.defaultViewport,
-    executablePath: await chromium.executablePath,
+  const browser = await puppeteer.launch({
+    headless: false
   });
 
   const page = await browser.newPage();
