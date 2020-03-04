@@ -2,6 +2,8 @@ const puppeteer = require('puppeteer');
 
 const Signin = require('../lib');
 
+const { strategies } = Signin;
+
 (async() => {
   const browser = await puppeteer.launch({
     headless: false
@@ -14,9 +16,9 @@ const Signin = require('../lib');
     waitUntil: 'domcontentloaded',
   });
 
-  const login = new Signin(page);
+  const login = await new Signin(page);
 
-  login.setKey('239c066cd54b6d090915b616983c4876', '2captcha');
+  login.setStrategy(new strategies.TwoCaptcha('239c066cd54b6d090915b616983c4876'));
 
   await login.signin('10729592673', 'MODDATOS', 'MODDATOS');
 })()
