@@ -16,13 +16,17 @@ const { strategies } = Signin;
     waitUntil: 'domcontentloaded',
   });
 
-  const login = await new Signin(page);
+  const login = Signin(page);
 
   const Strategy = strategies.get('without-supplier');
-  
+
   if (Strategy) {
-    login.setStrategy(new Strategy('239c066cd54b6d090915b616983c4876'));    
+    login.setStrategy(new Strategy('239c066cd54b6d090915b616983c4876'));
   }
-  
-  await login.signin('10460033280', 'MODDATOS', 'MODDATOS');
+
+  try {
+    await login.signin('10460033280', 'MODATOS', 'MODDATOS');
+  } catch ({ message }) {
+    console.log(message);
+  }
 })()
