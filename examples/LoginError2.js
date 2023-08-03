@@ -1,3 +1,5 @@
+"use strict";
+
 const puppeteer = require('puppeteer');
 
 const Signin = require('../lib');
@@ -6,7 +8,7 @@ const { strategies } = Signin;
 
 (async() => {
   const browser = await puppeteer.launch({
-    headless: false
+    headless: false,
   });
 
   const page = await browser.newPage();
@@ -16,9 +18,9 @@ const { strategies } = Signin;
     waitUntil: 'domcontentloaded',
   });
 
-  const login = await new Signin(page);
-  
-  login.setStrategy(new strategies.TwoCaptcha('239c066cd54b6d090915b616983c4876'));
-  
-  await login.signin('10729592663', 'MODDATOS', 'MODDATOS');
+  const login = Signin(page);
+
+  login.setStrategy(strategies.TwoCaptcha('239c066cd54b6d090915b616983c4876'));
+
+  await login.signin('10123456780', 'MODDATOS', 'MODDATOS');
 })()

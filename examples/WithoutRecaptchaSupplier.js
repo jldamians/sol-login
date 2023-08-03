@@ -1,18 +1,21 @@
+"use strict";
+
 const puppeteer = require('puppeteer');
 
 const Signin = require('../lib');
+const Time = require('../lib/Time');
 
 const { strategies } = Signin;
 
 (async() => {
   const browser = await puppeteer.launch({
-    headless: false
+    headless: false,
   });
 
   const page = await browser.newPage();
 
   page.goto('https://e-menu.sunat.gob.pe/cl-ti-itmenu/MenuInternet.htm', {
-    timeout: 30 * 1000,
+    timeout: Time.getSeconds(30),
     waitUntil: 'domcontentloaded',
   });
 
@@ -25,7 +28,7 @@ const { strategies } = Signin;
   }
 
   try {
-    await login.signin('10460033280', 'MODATOS', 'MODDATOS');
+    await login.signin('10123456780', 'MODDATOS', 'MODDATOS');
   } catch ({ message }) {
     console.log(message);
   }
