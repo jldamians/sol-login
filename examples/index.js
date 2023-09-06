@@ -2,7 +2,7 @@
 
 import puppeteer from "puppeteer";
 
-import WebsiteSOL from "../lib/index.js";
+import WebsiteLogin from "../lib/index.js";
 
 (async() => {
   const browser = await puppeteer.launch({
@@ -17,7 +17,7 @@ import WebsiteSOL from "../lib/index.js";
       waitUntil: 'domcontentloaded',
     });
 
-    const perfil = await WebsiteSOL(page).login('10460033280', 'MODDATOS', 'MODDATOS');
+    const perfil = await WebsiteLogin(page).login('10460033280', 'MODDATOS', 'MODDATOS');
 
     console.log(perfil);
   } catch (error) {
