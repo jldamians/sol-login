@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "Permite loguearse al portal SOL de SUNAT",
   "main": "./lib/index.js",
+  "type": "module",
   "scripts": {
     "start": "node /lib/index.js",
     "test": "jasmine"
@@ -10,6 +11,10 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jldamians/sol-login.git"
+  },
+  "engines": {
+    "node": ">=18.17.1",
+    "npm": ">=9.6.7"
   },
   "keywords": [
     "sunat",
@@ -22,13 +27,7 @@
     "url": "https://github.com/jldamians/sol-login/issues"
   },
   "homepage": "https://github.com/jldamians/sol-login#readme",
-  "dependencies": {
-    "axios": "^0.19.0",
-    "promise-poller": "^1.9.1",
-    "tea-error": "^0.2.0",
-    "check-ruc": "git+ssh://git@github.com/jldamians/check-ruc.git#v1.0.2"
-  },
   "devDependencies": {
-    "puppeteer": "^2.1.1"
+    "puppeteer": "^21.1.1"
   }
 }
