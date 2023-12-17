@@ -1,6 +1,6 @@
 {
   "name": "sol-login",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Permite loguearse al portal SOL de SUNAT",
   "main": "lib/index.js",
   "type": "module",
