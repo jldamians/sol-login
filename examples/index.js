@@ -32,9 +32,22 @@ import SunatLoginHandler, {TimeConverterUtil} from "../lib/index.js";
     const SUNAT_WEBSITE_URL = 'https://e-menu.sunat.gob.pe/cl-ti-itmenu/MenuInternet.htm';
     const MAXIMUM_WAIT_TIME = TimeConverterUtil(20).secsToMillis();
     const REQUEST_INTERCEPTION = true;
-    const ruc = '10460033281';
-    const user = 'MODDATOS';
-    const pass = 'MODDATOS';
+    const ruc = '20518132947';
+    const user = '45998461';
+    const pass = 'Servicios123';
+
+    // ************************************************************
+      // Connect to Chrome DevTools
+      /*const client = await page.target().createCDPSession()
+
+      // Set throttling property
+      await client.send('Network.emulateNetworkConditions', {
+        'offline': false,
+        'downloadThroughput': 200 * 1024 / 8,
+        'uploadThroughput': 200 * 1024 / 8,
+        'latency': 20
+      })*/
+    // ************************************************************
 
     await page.goto(SUNAT_WEBSITE_URL, {
       timeout: MAXIMUM_WAIT_TIME,
@@ -42,6 +55,38 @@ import SunatLoginHandler, {TimeConverterUtil} from "../lib/index.js";
     });
 
     await page.setRequestInterception(REQUEST_INTERCEPTION);
+
+    /*page.on("request", async request => {
+      const link = request.url();
+
+      if (request.url().search('https://api-seguridad.sunat.gob.pe') !== -1) {
+        const content = await (request.response()).text();
+        console.log('* * * * * * * * * * * * * * *');
+        console.log(link);
+        console.log(content);
+        console.log('* * * * * * * * * * * * * * *');
+      }
+
+      //const content = await (request.response()).text();
+      //console.log(content);
+
+      await request.continue();
+    });*/
+
+    page.on("response", async response => {
+      const link = response.url();
+
+      if (link.search('https://api-seguridad.sunat.gob.pe/v1') !== -1) {
+        //const content = await response.text();
+        const status = response.status();
+
+        console.log('* * * * * * * * * * * * * * *');
+        console.log(link);
+        //console.log(content);
+        console.log(status);
+        console.log('* * * * * * * * * * * * * * *');
+      }
+    });
 
     const perfil = await SunatLoginHandler(page, {
       visible: true,
@@ -53,7 +98,7 @@ import SunatLoginHandler, {TimeConverterUtil} from "../lib/index.js";
   } catch (error) {
     console.log(error);
   } finally {
-    await browser.close();
+    //await browser.close();
     console.timeEnd('scraper');
   }
 })()
