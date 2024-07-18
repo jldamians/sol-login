@@ -32,9 +32,9 @@ import SunatLoginHandler, {TimeConverterUtil} from "../lib/index.js";
     const SUNAT_WEBSITE_URL = 'https://e-menu.sunat.gob.pe/cl-ti-itmenu/MenuInternet.htm';
     const MAXIMUM_WAIT_TIME = TimeConverterUtil(20).secsToMillis();
     const REQUEST_INTERCEPTION = true;
-    const ruc = '20518132947';
-    const user = '45998461';
-    const pass = 'Servicios123';
+    const ruc = '10460033280';
+    const user = 'MODDATOS';
+    const pass = 'MODDATOS';
 
     // ************************************************************
       // Connect to Chrome DevTools
@@ -71,13 +71,11 @@ import SunatLoginHandler, {TimeConverterUtil} from "../lib/index.js";
       }
     });*/
 
-    const perfil = await SunatLoginHandler(page, {
+    await SunatLoginHandler(page, {
       visible: true,
       click: true,
       interception: REQUEST_INTERCEPTION,
     }).login(ruc, user, pass);
-
-    console.log(perfil);
   } catch (error) {
     console.log(error);
   } finally {
